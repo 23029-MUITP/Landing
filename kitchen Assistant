@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        header p {
+            margin: 5px 0;
+        }
+
+        section {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 50px;
+        }
+
+        section div {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        section h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            margin-bottom: 5px;
+        }
+
+        img {
+            max-width: 70%;
+            height: auto;
+            border-radius: 2cm;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .form-box {
+            display: none;
+            max-width: 300px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        input {
+            width: calc(10% - 20px);
+           
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        
+        #subscriptionForm {
+            text-align: center;
+            margin: 40px auto;
+            max-width: 400px;
+        }
+
+        #subscribeEmail {
+            width: calc(100% - 20px);
+           
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+    <title>KITCHENMASTER - Your Culinary Assistant</title>
+</head>
+
+<body>
+    <header>
+        <h1><a href="#" style="color: #fff; text-decoration: none;">KITCHENMASTER</a></h1>
+        <p>Your Culinary Assistant</p>
+    </header>
+
+    <p><a href="#" onclick="showLogin()">Log In</a> | <a href="#" onclick="showSignup()">Sign Up</a></p>
+
+    <div id="loginBox" class="form-box">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="text" placeholder="Username" id="username" required>
+            <input type="password" placeholder="Password" id="password" required>
+            <button type="button" onclick="validateLogin()">Log In</button>
+        </form>
+    </div>
+
+    <div id="signupBox" class="form-box">
+        <h2>Sign Up</h2>
+        <form id="signupForm">
+            <input type="text" placeholder="Username" id="signupUsername" required>
+            <input type="password" placeholder="Password" id="signupPassword" required>
+            <button type="button" onclick="validateSignup()">Sign Up</button>
+        </form>
+    </div>
+
+    <section id="intro">
+        <div>
+            <h2>Discover Exciting Recipes</h2>
+            <p>Explore a world of culinary delights tailored to your ingredients.</p>
+        </div>
+        <img src="chef cooking.jpg" alt="Chef Cooking">
+    </section>
+
+    <section id="how-it-works">
+        <div>
+            <h2>How It Works</h2>
+            <p>Simply provide your ingredients, and let KitchenMaster suggest amazing recipes for you.</p>
+        </div>
+        <img src="indigridents.jpg" alt="Ingredients">
+    </section>
+
+    <section id="features">
+        <div>
+            <h2>Key Features</h2>
+            <ul>
+                <li>Personalized Recipe Suggestions</li>
+                <li>Step-by-Step Cooking Instructions</li>
+                <li>Nutritional Information</li>
+            </ul>
+        </div>
+        
+    </section>
+
+    <section id="testimonial">
+        <div>
+            <h2>What Our Users Say</h2>
+            <p>"KitchenMaster has transformed my cooking experience. I now enjoy trying new recipes without the hassle
+                of meal planning."</p>
+            <p class="author">- Sarah M.</p>
+        </div>
+        
+    </section>
+
+    <section id="get-started">
+        <div>
+            <h2>Get Started Today</h2>
+            <p>Join KitchenMaster and embark on a culinary journey like never before. <a href="#" style="color: #333; text-decoration: underline;">Sign up now!</a></p>
+        </div>
+        
+    </section>
+
+    <footer>
+        <div id="subscriptionForm">
+            <h2>Subscribe to Our Newsletter</h2>
+            <form>
+                <input type="email" placeholder="Your Email" id="subscribeEmail" required>
+                <button type="button" onclick="subscribe()">Subscribe</button>
+            </form>
+        </div>
+    </footer>
+
+    <script>
+        function showLogin() {
+            document.getElementById("loginBox").style.display = "block";
+            document.getElementById("signupBox").style.display = "none";
+        }
+
+        function showSignup() {
+            document.getElementById("signupBox").style.display = "block";
+            document.getElementById("loginBox").style.display = "none";
+        }
+
+        function validateLogin() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            if (username && password) {
+                alert(`Login successful!\nUsername: ${username}\nPassword: ${password}`);
+            } else {
+                alert("Please enter both username and password.");
+            }
+        }
+
+        function validateSignup() {
+            const signupUsername = document.getElementById("signupUsername").value;
+            const signupPassword = document.getElementById("signupPassword").value;
+
+            if (signupUsername && signupPassword) {
+                alert(`Sign Up successful!\nUsername: ${signupUsername}\nPassword: ${signupPassword}`);
+            } else {
+                alert("Please enter both username and password.");
+            }
+        }
+
+        function subscribe() {
+            const subscribeEmail = document.getElementById("subscribeEmail").value;
+
+            if (subscribeEmail) {
+                alert(`You have subscribed with email: ${subscribeEmail}`);
+            } else {
+                alert("Please enter your email to subscribe.");
+            }
+        }
+    </script>
+</body>
+
+</html>
